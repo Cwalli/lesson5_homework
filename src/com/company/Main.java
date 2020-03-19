@@ -27,15 +27,16 @@ public class Main {
         houses[3] = new House(2007, 21, addresses[2]);
 
      //   System.out.println(Arrays.toString(houses));
-        System.out.println(houses[1].getAllHouseInfo());
-        System.out.println(houses[2].getAllHouseInfo());
-        System.out.println(houses[3].getAllHouseInfo());
+      //  System.out.println(houses[1].getAllHouseInfo());
+       // System.out.println(houses[2].getAllHouseInfo());
+       // System.out.println(houses[3].getAllHouseInfo());
         //    int InitHouseCount = houses[0].getHouseCount();
 
       //  for (House house : houses)
           //  if (house != null)
           //  {
             for(int i =0; i < houses[0].getHouseCount(); i++ ){
+            System.out.println("Номер объекта: " + (i+1));
             System.out.println(houses[i].getAllHouseInfo());
             System.out.println("-------------------------------");
             }
@@ -43,6 +44,8 @@ public class Main {
 // }
         for(;;){
             Scanner in = new Scanner(System.in);
+            Scanner inStreet = new Scanner(System.in);
+            Scanner WriteNewBuilding = new Scanner(System.in);
             System.out.println("Введите номер необходимого действия:" + "\n" + "1 - Вывод информации" + "\n" +
                     "2 - Редактирование" + "\n" + "3 - Добавление нового объекта" + "\n" + "4 - Выход из программы");
 
@@ -51,6 +54,7 @@ public class Main {
                 switch (answer) {
                     case (1):
                         for(int i =0; i < houses[0].getHouseCount(); i++ ){
+                            System.out.println("Номер объекта: " + (i+1));
                             System.out.println(houses[i].getAllHouseInfo());
                             System.out.println("-------------------------------");
                         }
@@ -94,8 +98,11 @@ public class Main {
                                     case (3):
                                         System.out.println("Текущая улица: " + addresses[answer1 - 1].getStreet());
                                         System.out.println("Введите новую улицу:");
-                                        String WriteStreet = in.next();
-                                        if (WriteStreet != null) addresses[answer1 - 1].setStreet(WriteStreet);
+                                        String WriteStreet = inStreet.nextLine();
+                                       //
+                                        //if (WriteStreet != null)
+                                            addresses[answer1 - 1].setStreet(WriteStreet);
+
                                         break;
                                     case (4):
                                         System.out.println("Текущий номер дома: " + addresses[answer1 - 1].getHouseNumber());
@@ -121,10 +128,11 @@ public class Main {
                             System.out.println("Введен неверный параметр!!! Завершение работыпрограммы!!!");
                             break;
                         }
-
+                    break;
                     case (3):
-                        addresses[houses[0].getHouseCount()] = new Address("Street", 50);
-                        houses[houses[0].getHouseCount()] = new House(1950, 5, addresses[0]);
+
+                        addresses[houses[0].getHouseCount()] = new Address("Str", 50);
+                        houses[houses[0].getHouseCount()] = new House(1950, 5, addresses[houses[0].getHouseCount()]);
                         System.out.println("Введите год постройки для нового объекта:");
                         int WriteYear = in.nextInt();
                         if (WriteYear > 0) houses[houses[0].getHouseCount()-1].setYear(WriteYear);
@@ -134,17 +142,20 @@ public class Main {
                         if (WriteFloor > 0) houses[houses[0].getHouseCount()-1].setFloor(WriteFloor);
 
                         System.out.println("Введите улицу для нового объекта:");
-                        String WriteStreet = in.nextLine();
-                        if (WriteStreet != null) addresses[houses[0].getHouseCount()-1].setStreet(WriteStreet);
+                        String WriteStreet = inStreet.nextLine();
+                      //  if (WriteStreet != null)
+                            addresses[houses[0].getHouseCount()-1].setStreet(WriteStreet);
+
 
                         System.out.println("Введите номер дома для нового объекта:");
                         int WriteHouseNumber = in.nextInt();
-                        if (WriteHouseNumber > 0)
+                      //  if (WriteHouseNumber > 0)
                             addresses[houses[0].getHouseCount()-1].setHouseNumber(WriteHouseNumber);
 
                         System.out.println("Введите корпус для нового объекта:");
                         int WriteBuilding = in.nextInt();
-                        if (WriteBuilding > 0) addresses[houses[0].getHouseCount()-1].setBuilding(WriteBuilding);
+                      // if (WriteBuilding > 0)
+                            addresses[houses[0].getHouseCount() - 1].setBuilding(WriteBuilding);
 
                         break;
 
